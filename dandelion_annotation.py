@@ -8,8 +8,9 @@ from dandelion import DataTXT
 with open("config.json") as fin:
     config_data = json.load(fin)
 
-datatxt = DataTXT(app_id = config_data['application_id'], 
-                  app_key = config_data['application_key'])
+#datatxt = DataTXT(app_id = config_data['application_id'], app_key = config_data['application_key'])
+datatxt = DataTXT(token = config_data['token'])
+
 
 def simple_clean(text):
     text = " ".join(text.replace("’","'").split())
@@ -44,8 +45,8 @@ def dandelion_nex(string, min_conf = 0.8, epsilon = 0.3, language="it"):
     response = datatxt._do_raw_request( "https://api.dandelion.eu/datatxt/nex/v1",
                         {"text": string,
                          "lang": language , 
-                         "$app_id" : config_data['application_id'], 
-                         "$app_key" : config_data['application_key'],
+                         #"$app_id" : config_data['application_id'], "$app_key" : config_data['application_key'],
+                         "token" : config_data['token'],
                          "include_lod" : True,
                          "epsilon" : epsilon,
                          "min_confidence" : min_conf},
