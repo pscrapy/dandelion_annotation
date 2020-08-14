@@ -1,0 +1,5 @@
+config.json
+environ/*
+.ipynb_checkpoints/*
+__pycache__/*
+*.bat
